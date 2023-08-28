@@ -32,7 +32,7 @@ def create_user():
     data = request.json
     print(data)
 
-    new_user=User(username=data['username'], email=data['email'])
+    new_user=User(username=data['username'], email=data['email'], password=data['password'])
 
 
     db.session.add(new_user)
