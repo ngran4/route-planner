@@ -1,15 +1,6 @@
 from flask import Flask, request, jsonify
-from models import User
+from models import User, db, app
 from flask_sqlalchemy import SQLAlchemy
-
-db = SQLAlchemy())
-
-def create_app():
-    app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:FXZ2v3TmracgceRKluVH@containers-us-west-35.railway.app:7698/railway"
-    db.init_app(app)
-
-    return app
 
 @app.route("/api/users", methods=['GET'])
 def get_user():
@@ -29,14 +20,15 @@ def get_user():
 @app.route('/api/users', methods=['POST'])
 def create_user():
     data = request.json
+    print(data)
 
-    new_user=User(id=35, username=data['username'], email=data['email'])
+    new_user=User(username=data['username'], email=data['email'])
 
 
     db.session.add(new_user)
     db.session.commit()
 
-    return jsonify({"done"})
+    return jsonify({"done":"done"})
 
 if __name__ == "__main__":
     app.run(debug=True)
