@@ -1,15 +1,16 @@
 from flask import Flask, request, jsonify
-from models import User
+from models import User, db, app
 from flask_sqlalchemy import SQLAlchemy
+from flask_jwt_extended import JWTManager, create_access_token
+from dotenv import load_dotenv
+import os
 
-db = SQLAlchemy())
+load_dotenv()
 
-def create_app():
-    app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:FXZ2v3TmracgceRKluVH@containers-us-west-35.railway.app:7698/railway"
-    db.init_app(app)
+SECRET_KEY= os.environ.get('SECRET_KEY')
+app.config['JWT_SECRET_KEY'] = SECRET_KEY
+jwt = JWTManager(app)
 
-    return app
 
 @app.route("/api/users", methods=['GET'])
 def get_user():
@@ -29,14 +30,17 @@ def get_user():
 @app.route('/api/users', methods=['POST'])
 def create_user():
     data = request.json
+    print(data)
 
-    new_user=User(id=35, username=data['username'], email=data['email'])
+    new_user=User(username=data['username'], email=data['email'], password=data['password'])
 
 
     db.session.add(new_user)
     db.session.commit()
 
-    return jsonify({"done"})
+    # return jsonify({"done":"done"})
+    access_token = create_access_token(identity=new_user.id)
+    return jsonify({"access_token": access_token}), 200
 
 if __name__ == "__main__":
     app.run(debug=True)
