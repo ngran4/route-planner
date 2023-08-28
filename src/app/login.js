@@ -22,6 +22,7 @@ const Login = () => {
       }
     } catch (error) {
       setMessage('Invalid username or password. Which one? Good question. And good luck.')
+      localStorage.getItem = null
       console.log(localStorage.getItem)
     }
   };
