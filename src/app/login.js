@@ -21,6 +21,7 @@ const Login = () => {
         localStorage.setItem('token', response.data.token)
         sessionStorage.setItem('name', response.data.username)
         localStorage.setItem('name', response.data.username)
+        window.location.reload()
         console.log(sessionStorage)
       }
     } catch (error) {
@@ -29,21 +30,6 @@ const Login = () => {
     }
   }
 
-  const logout = () => {
-    localStorage.removeItem('token')
-    sessionStorage.removeItem('token')
-    console.log("Token removed!")
-    window.location.reload()
-  }
-
-  if (localStorage.getItem('token')){
-    return  (
-    <>
-    <p>Hi {localStorage.getItem('name')}! You are logged in.</p>
-    <button onClick={logout}>Logout</button>
-    </>
-    )
-  } else {
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -68,6 +54,6 @@ const Login = () => {
       <p>{message}</p>
     </div>
   )
-}}
+}
 
 export default Login

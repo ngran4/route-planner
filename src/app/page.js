@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Login from './login'
+import Register from './register'
 
 // export default function Home() {
 //   return (
@@ -117,7 +118,28 @@ import Login from './login'
 // }
 
 export default function Home() {
-  return (
-    <Login/>
-  )
+  const logout = () => {
+    localStorage.removeItem('token')
+    sessionStorage.removeItem('token')
+    console.log("Token removed!")
+    window.location.reload()
+  }
+
+  if (localStorage.getItem('token')){
+    return  (
+    <>
+    <p>Hi {localStorage.getItem('name')}! You are logged in.</p>
+    <button onClick={logout}>Logout</button>
+    </>
+    )
+  } else {
+    return (
+      <>
+      <h1>Login here:</h1>
+      <Login/>
+      <h1>Register here:</h1>
+      <Register/>
+      </>
+    )
+  }
 }
