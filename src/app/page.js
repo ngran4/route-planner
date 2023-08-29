@@ -4,6 +4,19 @@ import Login from './login'
 import Register from './register'
 
 export default function Home() {
+  const [activeForm, setActiveForm] = useState('login');
+
+  const toggleForm = () => {
+    setActiveForm(prevForm => (prevForm === 'login' ? 'signup' : 'login'));
+  };
+
+
+  const [activeComponent, setActiveComponent] = useState('login');
+
+  const handleButtonClick = (component) => {
+    setActiveComponent(component);
+  };
+
 
   const logout = () => {
     localStorage.removeItem('token')
@@ -22,13 +35,11 @@ export default function Home() {
   } else {
     return (
       <>
-          {currentComp === 'login' ? (
-      <Login showRegister={handleToggle}/>
+          {activeForm === 'login' ? (
+      <Login showRegister={toggleForm}/>
     ) : (
-      <Register showLogin={handleToggle} />
+      <Register showLogin={toggleForm} />
     )}
-      {/* <Login/>
-      <Register/> */}
       </>
     )
   }
