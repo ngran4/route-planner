@@ -21,7 +21,6 @@ export default function Home() {
   } else {
     return (
       <>
-      <h1>Login here:</h1>
       <Login/>
       <h1>Register here:</h1>
       <Register/>
