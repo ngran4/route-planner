@@ -17,11 +17,13 @@ const Login = () => {
 
       if (response.status === 200) {
         setMessage(`Welcome, ${response.data.username}!`)
-        sessionStorage.setItem('token', response.data.token)
-        localStorage.setItem('token', response.data.token)
-        sessionStorage.setItem('name', response.data.username)
-        localStorage.setItem('name', response.data.username)
-        window.location.reload()
+        if (typeof window !== 'undefined') {
+          sessionStorage.setItem('token', response.data.token)
+          localStorage.setItem('token', response.data.token)
+          sessionStorage.setItem('name', response.data.username)
+          localStorage.setItem('name', response.data.username)
+          window.location.reload()
+        }
         console.log(sessionStorage)
       }
     } catch (error) {
