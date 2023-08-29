@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 
-const Login = () => {
+const Login = ({ showRegister }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -36,29 +36,6 @@ const Login = () => {
   };
 
   return (
-    // <div>
-    //   <form onSubmit={handleSubmit}>
-    //     <div>
-    //       <label>Username:</label>
-    //       <input
-    //         type="text"
-    //         value={username}
-    //         onChange={(e) => setUsername(e.target.value)}
-    //       />
-    //     </div>
-    //     <div>
-    //       <label>Password:</label>
-    //       <input
-    //         type="password"
-    //         value={password}
-    //         onChange={(e) => setPassword(e.target.value)}
-    //       />
-    //     </div>
-    //     <button type="submit">Login</button>
-    //   </form>
-    //   <p>{message}</p>
-    // </div>
-
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 bg-white rounded-md shadow-md md:max-w-xl">
         <h1 className="text-3xl font-bold text-center text-gray-700">Login</h1>
@@ -101,12 +78,12 @@ const Login = () => {
 
         <p className="mt-4 text-sm text-center text-gray-700">
           Don't have an account?{" "}
-          <Link
-            href="/signup"
+          <p
+            onClick={showRegister}
             className="font-medium text-blue-600 hover:underline"
           >
             Sign up
-          </Link>
+          </p>
         </p>
       </div>
     </div>

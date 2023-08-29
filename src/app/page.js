@@ -1,9 +1,10 @@
 "use client"
-
+import React, {useState} from 'react';
 import Login from './login'
 import Register from './register'
 
 export default function Home() {
+
   const logout = () => {
     localStorage.removeItem('token')
     sessionStorage.removeItem('token')
@@ -21,9 +22,13 @@ export default function Home() {
   } else {
     return (
       <>
-      <Login/>
-      <h1>Register here:</h1>
-      <Register/>
+          {currentComp === 'login' ? (
+      <Login showRegister={handleToggle}/>
+    ) : (
+      <Register showLogin={handleToggle} />
+    )}
+      {/* <Login/>
+      <Register/> */}
       </>
     )
   }
