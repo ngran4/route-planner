@@ -78,12 +78,12 @@ const Login = ({ showRegister }) => {
 
         <p className="mt-4 text-sm text-center text-gray-700">
           Don't have an account?{" "}
-          <p
+          <span
             onClick={showRegister}
             className="font-medium text-blue-600 hover:underline"
           >
             Sign up
-          </p>
+          </span>
         </p>
       </div>
     </div>

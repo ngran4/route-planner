@@ -80,12 +80,12 @@ const Register = ({ showLogin }) => {
 
       <p className="mt-4 text-sm text-center text-gray-700">
         Already have an account?{" "}
-        <p
+        <span
           onClick={showLogin}
           className="font-medium text-blue-600 hover:underline"
         >
           Log In
-        </p>
+        </span>
       </p>
     </div>
   </div>
