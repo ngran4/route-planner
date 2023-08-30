@@ -19,10 +19,12 @@ export default function Home() {
 
 
   const logout = () => {
+    if (typeof window !== "undefined") {
     localStorage.removeItem('token')
     sessionStorage.removeItem('token')
     console.log("Token removed!")
     window.location.reload()
+    }
   }
 
   if (localStorage.getItem('token')){
