@@ -1,6 +1,22 @@
-import React from "react";
+'use client'
+import React, {useState, useEffect} from "react";
 
-export default function Nav({ logout, isLoggedIn }) {
+export default function Nav() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+    console.log("Token removed!");
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   if (isLoggedIn) {
     return (
       <>
