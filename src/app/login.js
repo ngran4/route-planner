@@ -37,13 +37,13 @@ const Login = ({ showRegister }) => {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
-      <div className="w-full p-6 bg-white rounded-md shadow-md md:max-w-xl">
-        <h1 className="text-3xl font-bold text-center text-gray-700">Login</h1>
+      <div className="w-full p-6 bg-black rounded-md shadow-md md:max-w-xl">
+        <h1 className="text-3xl font-bold text-center text-neutral-100">Login</h1>
         <form onSubmit={handleSubmit} className="mt-6">
           <div className="mb-4">
             <label
               htmlFor="email"
-              className="block text-sm font-semibold text-gray-800"
+              className="block text-sm font-semibold text-neutral-100"
             >
               Email
             </label>
@@ -57,7 +57,7 @@ const Login = ({ showRegister }) => {
           <div className="mb-2">
             <label
               htmlFor="password"
-              className="block text-sm font-semibold text-gray-800"
+              className="block text-sm font-semibold text-neutral-100"
             >
               Password
             </label>
@@ -70,13 +70,13 @@ const Login = ({ showRegister }) => {
           </div>
           <p className="mt-4 text-sm text-center text-gray-700 pb-4">{message}</p>
           <div className="mt-2">
-            <button type='submit' className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+            <button type='submit' className="w-full px-4 py-2 tracking-wide text-neutral-100 transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
               Login
             </button>
           </div>
         </form>
 
-        <p className="mt-4 text-sm text-center text-gray-700">
+        <p className="mt-4 text-sm text-center text-neutral-300">
           Don't have an account?{" "}
           <span
             onClick={showRegister}

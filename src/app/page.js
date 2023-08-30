@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Login from './login';
 import Register from './register';
+import Nav from './nav';
 
 export default function Home() {
   const [activeForm, setActiveForm] = useState('login');
@@ -31,13 +32,13 @@ export default function Home() {
   if (isLoggedIn) {
     return (
       <>
-        <p>Hi {localStorage.getItem('name')}! You are logged in.</p>
-        <button onClick={logout}>Logout</button>
+        <Nav logout={logout} isLoggedIn={isLoggedIn}/>
       </>
     );
   } else {
     return (
       <>
+        <Nav logout={logout} isLoggedIn={isLoggedIn} />
         {activeForm === 'login' ? (
           <Login showRegister={toggleForm} />
         ) : (

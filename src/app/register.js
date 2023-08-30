@@ -26,13 +26,13 @@ const Register = ({ showLogin }) => {
 
   return (
     <div className="relative flex flex-col items-center justify-center min-h-screen overflow-hidden">
-    <div className="w-full p-6 bg-white rounded-md shadow-md md:max-w-xl">
-      <h1 className="text-3xl font-bold text-center text-gray-700">Sign Up</h1>
+    <div className="w-full p-6 bg-black rounded-md shadow-md md:max-w-xl">
+      <h1 className="text-3xl font-bold text-center text-neutral-100">Sign Up</h1>
       <form onSubmit={handleRegister} className="mt-6">
       <div className="mb-4">
           <label
             htmlFor="udername"
-            className="block text-sm font-semibold text-gray-800"
+            className="block text-sm font-semibold text-neutral-100"
           >
             Username
           </label>
@@ -46,7 +46,7 @@ const Register = ({ showLogin }) => {
         <div className="mb-4">
           <label
             htmlFor="email"
-            className="block text-sm font-semibold text-gray-800"
+            className="block text-sm font-semibold text-neutral-100"
           >
             Email
           </label>
@@ -60,7 +60,7 @@ const Register = ({ showLogin }) => {
         <div className="mb-2">
           <label
             htmlFor="password"
-            className="block text-sm font-semibold text-gray-800"
+            className="block text-sm font-semibold text-neutral-100"
           >
             Password
           </label>
@@ -72,13 +72,13 @@ const Register = ({ showLogin }) => {
           />
         </div>
         <div className="mt-2">
-          <button type='submit' className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
+          <button type='submit' className="w-full px-4 py-2 tracking-wide text-neutral-100 transition-colors duration-200 transform bg-gray-700 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-600">
             Login
           </button>
         </div>
       </form>
 
-      <p className="mt-4 text-sm text-center text-gray-700">
+      <p className="mt-4 text-sm text-center text-neutral-300">
         Already have an account?{" "}
         <span
           onClick={showLogin}
