@@ -4,7 +4,7 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  --background-start-rgb: 100, 210, 100;
   --background-end-rgb: 255, 255, 255;
 }
 
@@ -18,10 +18,13 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  height: 100vh;
+  width: 100vw;
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
-}
+    rgb(var(--background-start-rgb)); */
+    background-image: linear-gradient(to bottom, #7bd24f, #87d757, #93dd5e, #9fe266, #aae86e, #b3ec77, #bcef81, #c4f38a, #cdf697, #d5f8a4, #ddfab1, #e5fdbe);
+  }

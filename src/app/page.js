@@ -1,31 +1,48 @@
-"use client"
-
-import Login from './login'
-import Register from './register'
+import React, { useState, useEffect } from 'react';
+import Login from './login';
+import Register from './register';
 
 export default function Home() {
-  const logout = () => {
-    localStorage.removeItem('token')
-    sessionStorage.removeItem('token')
-    console.log("Token removed!")
-    window.location.reload()
-  }
+  const [activeForm, setActiveForm] = useState('login');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  if (localStorage.getItem('token')){
-    return  (
-    <>
-    <p>Hi {localStorage.getItem('name')}! You are logged in.</p>
-    <button onClick={logout}>Logout</button>
-    </>
-    )
+  const toggleForm = () => {
+    setActiveForm(prevForm => (prevForm === 'login' ? 'signup' : 'login'));
+  };
+
+  const handleButtonClick = component => {
+    setActiveComponent(component);
+  };
+
+  const logout = () => {
+    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+    console.log("Token removed!");
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
+  if (isLoggedIn) {
+    return (
+      <>
+        <p>Hi {localStorage.getItem('name')}! You are logged in.</p>
+        <button onClick={logout}>Logout</button>
+      </>
+    );
   } else {
     return (
       <>
-      <h1>Login here:</h1>
-      <Login/>
-      <h1>Register here:</h1>
-      <Register/>
+        {activeForm === 'login' ? (
+          <Login showRegister={toggleForm} />
+        ) : (
+          <Register showLogin={toggleForm} />
+        )}
       </>
-    )
+    );
   }
 }
