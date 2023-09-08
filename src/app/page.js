@@ -1,8 +1,8 @@
 'use client'
 import React, { useState, useEffect } from 'react';
-import Login from '@components/Login';
-import Register from '@components/register';
-import Nav from '@components/Nav';
+import Login from '../components/Login';
+import Register from '../components/register';
+import Nav from '../components/Nav';
 
 export default function Home() {
   const [activeForm, setActiveForm] = useState('login');
