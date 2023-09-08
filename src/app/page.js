@@ -1,7 +1,7 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import Login from '../../components/Login';
-import Register from '../../components/Registeregister';
+import Register from '../../components/Register';
 import Nav from '../../components/Nav';
 
 export default function Home() {
