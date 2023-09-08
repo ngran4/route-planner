@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from models import User, db, app
+from models import User, Favorites, db, app
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import JWTManager, create_access_token
 from dotenv import load_dotenv
@@ -57,6 +57,7 @@ def login():
         return {"token": access_token, "username": username}, 200
     else:
         return f"Invalid username or password. Which one? Good question. And good luck.", 401
+
 
 if __name__ == "__main__":
     app.run(debug=True)

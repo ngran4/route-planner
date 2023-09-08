@@ -25,6 +25,7 @@ class User(db.Model):
     username = db.Column(db.String(100), unique=True)
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(128))
+    favorites = db.relationship('Favorites', backref='user', lazy=True)
 
     def __init__(self, username, email, password):
         self.username = username
@@ -36,6 +37,25 @@ class User(db.Model):
 
     def __userThingy__(self):
         return f"User('{self.username}')"
-    
-# db.create_all()
 
+
+TITLE_CHOICES = (
+('home', 'Home'),
+('work', 'Work'),
+('custom', 'Custom')
+)
+
+class Favorites(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(20), nullable=False)
+    custom_title = db.Column(db.String(50), nullable=False)
+    address = db.Column(db.String(200), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def get_title(self):
+        if self.title == 'custom':
+            return self.custom_title
+        else:
+            return self.title
+
+# db.create_all()
