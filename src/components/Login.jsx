@@ -28,7 +28,7 @@ const Login = ({ showRegister }) => {
           localStorage.setItem("name", response.data.username);
           // window.location.reload();
           console.log('working')
-          router.push('/home/page2')
+          router.push('/home')
         }
         // console.log(sessionStorage);
       }
@@ -84,7 +84,7 @@ const Login = ({ showRegister }) => {
         </form>
 
         <p className="mt-4 text-sm text-center text-neutral-300">
-          Don't have an account?{" "}
+          Dont have an account?{" "}
           <span
             onClick={showRegister}
             className="font-medium text-blue-600 hover:underline"
