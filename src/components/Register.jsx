@@ -1,10 +1,13 @@
 import { useState } from 'react'
 import axios from 'axios'
+import {useRouter} from 'next/navigation'
+import handleSubmit from "./Login"
 
 const Register = ({ showLogin }) => {
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const router = useRouter()
 
   const handleRegister = async (e) => {
     e.preventDefault()
@@ -15,12 +18,13 @@ const Register = ({ showLogin }) => {
         email,
         password
       })
-
-      if (response.status === 201) {
+      console.log(response.status)
+      if (response.status === 200) {
         console.log('Registered.')
+        router.push('/home')
       }
     } catch (error) {
-      console.log(error)
+      console.log(error.response.data)
     }
   }
 
