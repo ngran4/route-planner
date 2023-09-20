@@ -25,5 +25,5 @@ export default function Home() {
       });
   }, []);
 
-  return <div id="map" ref={mapRef} style={{ width: "100%", height: "100vh" }} />;
+  return <div id="map" ref={mapRef} style={{ width: "50%", height: "50vh", margin: "0 auto" }} />;
 }
