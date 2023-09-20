@@ -84,7 +84,7 @@ const Login = ({ showRegister }) => {
         </form>
 
         <p className="mt-4 text-sm text-center text-neutral-300">
-          Dont have an account?{" "}
+          Need an account?{" "}
           <span
             onClick={showRegister}
             className="font-medium text-blue-600 hover:underline"
