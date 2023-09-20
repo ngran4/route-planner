@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import {useRouter} from 'next/navigation'
 import axios from "axios";
 import Link from "next/link";
 
 const Login = ({ showRegister }) => {
+  const router = useRouter();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
 
     try {
       const response = await axios.post("http://127.0.0.1:5000/api/login", {
@@ -23,15 +26,19 @@ const Login = ({ showRegister }) => {
           localStorage.setItem("token", response.data.token);
           sessionStorage.setItem("name", response.data.username);
           localStorage.setItem("name", response.data.username);
-          window.location.reload();
+          // window.location.reload();
+          console.log('working')
+          router.push('/home/page2')
         }
-        console.log(sessionStorage);
+        // console.log(sessionStorage);
       }
+      // router.push('/Home/page')
+      // console.log('this is runnin')
     } catch (error) {
       setMessage(
         "Invalid username or password. Which one? Good question. And good luck."
       );
-      console.log(sessionStorage);
+      // console.log(sessionStorage);
     }
   };
 
