@@ -23,6 +23,11 @@ export default function Home() {
         // Handle any errors
         console.error(err);
       });
+      // get lat, long
+      // https://developers.google.com/maps/documentation/routes/understand-route-response
+      // route is the polyline - going to want to show and manipulate the polyline on the screen?
+      // stretch - want physically the closest or the shortest route
+      // pain and tears
   }, []);
 
   return <div id="map" ref={mapRef} style={{ width: "50%", height: "50vh", margin: "0 auto" }} />;
