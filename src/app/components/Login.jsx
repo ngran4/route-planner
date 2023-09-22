@@ -1,17 +1,19 @@
-import { useState, useEffect } from "react";
-import {useRouter} from 'next/navigation'
+import { useState, useEffect, useContext } from "react";
+import {useRouter} from 'next/navigation';
 import axios from "axios";
+import AuthContext from '../AuthContext';
 import Link from "next/link";
 
 const Login = ({ showRegister }) => {
   const router = useRouter();
+  const { login } = useContext(AuthContext);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
 
     try {
       const response = await axios.post("http://127.0.0.1:5000/api/login", {
@@ -26,8 +28,7 @@ const Login = ({ showRegister }) => {
           localStorage.setItem("token", response.data.token);
           sessionStorage.setItem("name", response.data.username);
           localStorage.setItem("name", response.data.username);
-          // window.location.reload();
-          console.log('working')
+          login();
           router.push('/home')
         }
         // console.log(sessionStorage);
