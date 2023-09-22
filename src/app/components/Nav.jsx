@@ -1,32 +1,18 @@
 'use client'
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext } from "react";
+import AuthContext from '../AuthContext';
 
 export default function Nav() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const {isLoggedIn, login, logout } = useContext(AuthContext)
+  console.log(isLoggedIn)
 
-  const logout = () => {
-    localStorage.removeItem('token');
-    sessionStorage.removeItem('token');
-    console.log("Token removed!");
-    window.location.reload();
-  };
-
-  useEffect(() => {
-    if (localStorage.getItem('token')) {
-      setIsLoggedIn(true);
-    }
-  }, []);
-
-  if (isLoggedIn) {
     return (
       <>
         <nav className="relative flex w-full flex-wrap items-center justify-between bg-neutral-900 py-2 text-neutral-400 shadow-lg hover:text-neutral-500 focus:text-neutral-500 dark:bg-neutral-600 lg:py-4">
+        {isLoggedIn ? (
           <div className="flex w-full flex-wrap items-center justify-between px-3">
             <div className="ml-2">
-              <a
-                className="text-xl text-neutral-100 dark:text-neutral-200"
-                href="#"
-              >
+              <a className="text-xl text-neutral-100 dark:text-neutral-200" href="#">
                 Routeyplanz
               </a>
               <span className="ml-4">
@@ -45,25 +31,19 @@ export default function Nav() {
                 </button>
               </div>
           </div>
+              ) : (
+                <div className="flex w-full flex-wrap items-center justify-between px-3">
+                <div className="ml-2">
+                  <a
+                    className="text-xl text-neutral-100 dark:text-neutral-200"
+                    href="#"
+                  >
+                    Routeyplanz
+                  </a>
+                </div>
+              </div>
+              )}
         </nav>
       </>
-    );
-  } else {
-  return (
-    <>
-      <nav className="relative flex w-full flex-wrap items-center justify-between bg-neutral-900 py-2 text-neutral-500 shadow-lg hover:text-neutral-700 focus:text-neutral-500 dark:bg-neutral-600 lg:py-4">
-        <div className="flex w-full flex-wrap items-center justify-between px-3">
-          <div className="ml-2">
-            <a
-              className="text-xl text-neutral-100 dark:text-neutral-200"
-              href="#"
-            >
-              Routeyplanz
-            </a>
-          </div>
-        </div>
-      </nav>
-    </>
-  );
-  }
+    )
 }
