@@ -53,7 +53,7 @@ const Login = ({ showRegister }) => {
               htmlFor="email"
               className="block text-sm font-semibold text-neutral-100"
             >
-              Email
+              Username 
             </label>
             <input
               type="text"
